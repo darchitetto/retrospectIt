@@ -1,0 +1,30 @@
+<head>
+  <title>retrospectThat</title>
+</head>
+
+<body>
+	<h1>Retrospect That</h1>
+	Select you quad area:
+	<select>
+		<option value="0">Select Quad Area</option>
+
+		<option value="4">4-quad</option>
+		<option value="6">6-quad</option>
+		<option value="8">8-quad</option>
+	</select>
+	
+	<form>
+		<div>
+			{{#each quads}}
+				{{> quad}}
+			{{/each}}
+		</div>
+	</form>
+
+</body>
+
+<template name="quad">
+  	<div class="quad {{quadName}}"> 
+  		<span>name:{{quadName}}</span></div>
+</template>
+
