@@ -7,10 +7,10 @@ if (Meteor.isClient) {
   });
 
   Template.body.events({
-    'change select': function (e,t) {
+    'click .dropdown a': function (e,t) {
       Meteor.call('removeAllQuads');
 
-      for (var i = 0; i < e.target.value; i++) {
+      for (var i = 0; i <  $(e.target).attr('value'); i++) {
         Quads.insert({quadName: "quad" + i});
       };
     }
