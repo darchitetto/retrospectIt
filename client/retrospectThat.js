@@ -1,5 +1,3 @@
-Quads = new Mongo.Collection("quads");
-
 if (Meteor.isClient) {
 
   Template.body.helpers({
