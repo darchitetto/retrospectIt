@@ -1,4 +1,12 @@
 <template name="retrospectIt">
-Hi there
+	<div>
+		{{#each boardQuads}}
+			<div class="quad">
+				<div class="input-group">
+				 	<span>{{this}}</span>
+				</div>
+			</div>
+		{{/each}}
+	</div>
 
 </template>
