@@ -1,5 +1,10 @@
 <template name="newGameBoard">
 	<form>
+		Select your quad area:
+		{{> dropdown}}
+
+		<input class="btn btn-default" type="submit" value="Start Game">
+		
 		<div>
 			{{#each quads}}
 				{{> quad}}
