@@ -17,7 +17,7 @@ Template.boardQuads.helpers({
 			}
 		}
 		console.log(gridData);
-		return [];
+		return gridData;
 	}
 })
 

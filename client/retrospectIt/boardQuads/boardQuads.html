@@ -1,20 +1,13 @@
 <template name="boardQuads">
 	<div class="board container">
-		{{#each boardQuads}}
-			<div class="quad board-quad">
-				<div class="board-quad-name">{{this}}</div>
-			</div>
-		{{/each}}
-		
-	<div>***************************************</div>
-			{{#each rowCount}}
+			{{#each gridData}}
 				<div class="row">
-					<div class="col-md-1">
-						Something
-					</div>
+					{{#each this}}
+						<div class="col-lg-6 quad board-quad">
+							<div class="board-quad-name">{{this}}</div>
+						</div>
+					{{/each}}
 				</div>
 			{{/each}}
-
-			{{gridData }}
 	</div>
 </template>
