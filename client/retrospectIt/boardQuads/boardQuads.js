@@ -25,18 +25,28 @@ var canvas;
 
 Template.boardQuads.onRendered(function() {
 	canvas = new fabric.Canvas('1');
-	var text = new fabric.Text('hello world', { left: 100, top: 100 });
-	canvas.add(text);
 
 	canvas.on('mouse:down', function(options) {
 	  console.log('X:' + options.e.clientX, 'Y:' + options.e.clientY);
 	});
+
+	fabric.util.addListener(fabric.document, 'dblclick', function() {
+		bootbox.prompt("What is your name?", function(result) {                
+		  if (result === null) {                                             
+		    console.log("Prompt dismissed");                              
+		  } else {
+		    console.log(result);
+		    canvas.add(new fabric.Text(result));                          
+		  }
+		});
+	});
+	
 })
 
 Template.boardQuads.events({
     'click canvas': function (e) {
-		var text = new fabric.Text('new stuff', { left: 100, top: 100 });
-		canvas.add(text); 
+    	
+		
     }
 });
 
