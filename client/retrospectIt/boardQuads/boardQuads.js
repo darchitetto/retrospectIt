@@ -21,4 +21,10 @@ Template.boardQuads.helpers({
 	}
 })
 
+Template.boardQuads.onRendered(function() {
+	var canvas = new fabric.Canvas('1');
+	var text = new fabric.Text('hello world', { left: 100, top: 100 });
+	canvas.add(text);
+})
+
   
