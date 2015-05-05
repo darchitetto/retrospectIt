@@ -1,0 +1,44 @@
+<template name="actionItems">
+	<table class="table table-striped">
+	  <thead>
+	  	<tr>
+          <th>Status</th>
+          <th>Action Description</th>
+          <th>Priority</th>
+          <th>Owner</th>
+          <th></th>
+        </tr>
+	  </thead>
+	  <tbody>
+        <tr>
+          <th></th>
+          <td><input type="text" class="form-control" placeholder="Action Description"></td>
+          <td>
+          	<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			    Priority <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a href="#">High</a></li>
+			    <li><a href="#">Medium</a></li>
+			    <li><a href="#">Low</a></li>
+			  </ul>
+			</div>
+          </td>
+          <td>JZ</td>
+          <td>
+          	<div class="btn-group">
+			  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+			    Action <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" role="menu">
+			    <li><a href="#">Complete</a></li>
+			    <li class="divider"></li>
+			    <li><a href="#">New Item</a></li>
+			  </ul>
+			</div>
+          </td>
+        </tr>
+       </tbody>
+	</table>
+</template>
