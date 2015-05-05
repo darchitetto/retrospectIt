@@ -2,11 +2,7 @@
 		{{#each gridData}}
 			<div class="row">
 				{{#each this}}
-					<div class="col-xs-12 col-md-6 quad board-quad">
-						<div class="board-quad-name">{{this}}
-							<canvas id={{this}} > </canvas>
-						</div>
-					</div>
+					{{> quad }}
 				{{/each}}
 			</div>
 		{{/each}}

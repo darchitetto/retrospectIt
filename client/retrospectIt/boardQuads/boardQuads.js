@@ -21,18 +21,3 @@ Template.boardQuads.helpers({
 	}
 })
 
-var canvas; 
-
-Template.boardQuads.onRendered(function() {
-	canvas = new fabric.Canvas('1');
-
-	fabric.util.addListener(fabric.document, 'dblclick', function() {
-		bootbox.prompt("Whatcha want to say?", function(result) {                
-		  if (result === null) {                                             
-		  } else {
-		    canvas.add(new fabric.Text(result, { left: 100, top: 100 }));                          
-		  }
-		});
-	});
-	
-});  
