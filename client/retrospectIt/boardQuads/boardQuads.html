@@ -1,13 +1,11 @@
 <template name="boardQuads">
-	<div class="board container">
-			{{#each gridData}}
-				<div class="row">
-					{{#each this}}
-						<div class="col-lg-6 quad board-quad">
-							<div class="board-quad-name">{{this}}</div>
-						</div>
-					{{/each}}
-				</div>
-			{{/each}}
-	</div>
+		{{#each gridData}}
+			<div class="row">
+				{{#each this}}
+					<div class="col-lg-6 quad board-quad">
+						<div class="board-quad-name">{{this}}</div>
+					</div>
+				{{/each}}
+			</div>
+		{{/each}}
 </template>
