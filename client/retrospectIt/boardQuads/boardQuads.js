@@ -21,10 +21,23 @@ Template.boardQuads.helpers({
 	}
 })
 
+var canvas; 
+
 Template.boardQuads.onRendered(function() {
-	var canvas = new fabric.Canvas('1');
+	canvas = new fabric.Canvas('1');
 	var text = new fabric.Text('hello world', { left: 100, top: 100 });
 	canvas.add(text);
+
+	canvas.on('mouse:down', function(options) {
+	  console.log('X:' + options.e.clientX, 'Y:' + options.e.clientY);
+	});
 })
+
+Template.boardQuads.events({
+    'click canvas': function (e) {
+		var text = new fabric.Text('new stuff', { left: 100, top: 100 });
+		canvas.add(text); 
+    }
+});
 
   
