@@ -13,9 +13,11 @@ Template.quad.onRendered(function () {
         });
     })
 
-    template.$(".cards").html(Template.currentData().data);
-
-    _.each(template.$(".cards .card"), function(card){ makeCardDraggable(card, data.id) });
+    this.autorun(function() {
+        var data = Template.currentData();
+        _.each(template.$(".cards .card"), function(card){ makeCardDraggable(card, data.id) });
+    })
+    
 });
 
 function makeCardDraggable(card, quadId) {
