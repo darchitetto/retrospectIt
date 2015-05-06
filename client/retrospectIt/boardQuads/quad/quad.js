@@ -19,6 +19,17 @@ Template.quad.onRendered(function () {
     var data = Template.currentData();
     var template = Template.instance();
 
+    template.$('#' + data.id).doubletap(function() {
+        bootbox.prompt("Whatcha want to say?", function (result) {
+            if (result === null) {
+            } else {
+                var card = $("<div class='card'>").appendTo(template.$('.cards')).text(result);
+                makeCardDraggable(card[0], data.id);
+                Meteor.call('updateQuad', Session.get('gameId'), data.id, template.$(".cards").html())
+            }
+        });
+    })
+
     template.$(".cards").html(Template.currentData().data);
 
     _.each(template.$(".cards .card"), function(card){ makeCardDraggable(card, data.id) });
