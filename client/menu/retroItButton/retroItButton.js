@@ -1,5 +1,5 @@
 Template.retroItButton.events({
-    'click .retroItButton': function (e) {
+  //   'submit form': function (e) {
   //   	console.log(e)
 		// e.preventDefault();
   //       var formData = _.map(form2js(e.currentTarget), function(value) {
@@ -23,5 +23,5 @@ Template.retroItButton.events({
 		// 			Session.set('gameId', val);
 		// 		}
 		// 	});  
-    }
+  //   }
   });
