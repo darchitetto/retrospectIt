@@ -29,10 +29,18 @@ function makeCardDraggable(card, quadId) {
         .draggable({
             onmove: function (event) {
                 window.dragMoveListener(event, quadId);
+            },
+            restrict: {
+                restriction: '.cards',
+                elementRect: { top: 0, left: 0, bottom: 0, right: 0 }
             }
         })
         .resizable({
-            edges: {left: true, right: true, bottom: true, top: true}
+            edges: {left: true, right: true, bottom: true, top: true},
+            restrict: {
+                restriction: '.cards',
+                elementRect: { top: 0, left: 0, bottom: 0, right: 0 }
+            }
         })
         .on('resizemove', function (event) {
             var target = event.target,
