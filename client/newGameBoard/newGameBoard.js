@@ -1,5 +1,7 @@
 Template.newGameBoard.events({
     'submit form': function (e) {
+    	console.log('kdsjfkldsj')
+    	console.log(e.currentTarget)
 		e.preventDefault();
         var formData = _.map(form2js(e.currentTarget), function(value) {
         	return {
