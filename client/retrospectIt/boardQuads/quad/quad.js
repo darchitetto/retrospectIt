@@ -6,7 +6,12 @@ Template.quad.onRendered(function () {
         bootbox.prompt("Whatcha want to say?", function (result) {
             if (result === null) {
             } else {
-                var card = $("<div class='card'>").appendTo(template.$('.cards')).text(result);
+                var resultText = $("<div>").text(result);
+                var cardText = $("<span class='badge'>0</span>");
+                var card = $("<div class='card'>").appendTo(template.$('.cards'));
+                card.append(resultText);
+                card.append(cardText);
+
                 makeCardDraggable(card[0], data.id);
                 Meteor.call('updateQuad', Session.get('gameId'), data.id, template.$(".cards").html())
             }
@@ -15,6 +20,7 @@ Template.quad.onRendered(function () {
 
     this.autorun(function() {
         var data = Template.currentData();
+        template.$(".cards").html(Template.currentData().data);
         _.each(template.$(".cards .card"), function(card){ makeCardDraggable(card, data.id) });
     })
     
