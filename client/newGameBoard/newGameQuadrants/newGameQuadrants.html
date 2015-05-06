@@ -1,7 +1,11 @@
 <template name="newGameQuadrants">
 	<div class="new-game-quadrants">
-		{{#each newGameQuads}}
-			{{> newGameQuad}}
+		{{#each gridData}}
+			<div class="row">
+				{{#each this}}
+					{{> newGameQuad}}
+				{{/each}}
+			</div>
 		{{/each}}
 	</div>
 </template>
