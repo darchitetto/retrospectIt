@@ -1,8 +1,11 @@
 <template name="menu">
 	<div class="menu row">
-		<div class="buttons col-lg-12">
+		<div class="buttons col-lg-8">
 			{{> yield "firstButton"}}
 			{{> yield "otherButtons"}}
+		</div>
+		<div class="buttons col-lg-4">
+			{{> yield "timer"}}
 		</div>
 	</div>
 </template>
