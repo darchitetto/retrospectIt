@@ -7,7 +7,8 @@ Template.quad.onRendered(function () {
             if (result === null) {
             } else {
                 var resultText = $("<div>").text(result);
-                var cardText = $("<span class='badge'>0</span>");
+                var badgeNumber = Math.floor(Math.random()*10);
+                var cardText = $("<span class='badge'>" + badgeNumber + "</span>");
                 var card = $("<div class='card'>").appendTo(template.$('.cards'));
                 card.append(resultText);
                 card.append(cardText);
