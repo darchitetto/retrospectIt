@@ -1,8 +1,6 @@
 Template.newGameBoard.events({
     'submit form': function (e) {
-    	console.log('kdsjfkldsj')
-    	console.log(e.currentTarget)
-		e.preventDefault();
+    	e.preventDefault();
         var formData = _.map(form2js(e.currentTarget), function(value) {
         	return {
         			'id': Random.id(),
@@ -10,7 +8,9 @@ Template.newGameBoard.events({
 			}
         });
 
-        Games.insert({quads:formData}, function(er, val)
+        var createdAt = new Date();
+
+        Games.insert({quads:formData, createdAt: createdAt}, function(er, val)
 			{
 				Meteor.call('sendEmail',
 				            'denise@digital-pioneers.com',
