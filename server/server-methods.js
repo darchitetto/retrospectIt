@@ -17,11 +17,6 @@ Meteor.methods({
   	},
 
   	updateQuad: function(gameId, quadId, data) {
-  		console.log('data',data)
-  		console.log('quadId',quadId)
-
-  		console.log('gameId',gameId)
-  		
   		Games.update({
   			_id: gameId,
   			'quads.id': quadId

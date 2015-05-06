@@ -1,20 +1,3 @@
-Template.quad.events({
-    'dblclick': function (e) {
-        var data = Template.currentData();
-        var template = Template.instance();
-        var canvasIdAndIndexInGamesQuads = template.$('canvas').attr('id');
-
-        bootbox.prompt("Whatcha want to say?", function (result) {
-            if (result === null) {
-            } else {
-                var card = $("<div class='card'>").appendTo(template.$('.cards')).text(result);
-                makeCardDraggable(card[0], data.id);
-                Meteor.call('updateQuad', Session.get('gameId'), data.id, template.$(".cards").html())
-            }
-        });
-    }
-});
-
 Template.quad.onRendered(function () {
     var data = Template.currentData();
     var template = Template.instance();
