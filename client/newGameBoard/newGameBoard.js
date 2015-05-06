@@ -6,8 +6,8 @@ Template.newGameBoard.events({
         var formData = _.map(form2js(e.currentTarget), function(value) {
         	return {
         			'id': Random.id(),
-        			'label': value,
-        			'data': {}}
+        			'label': value
+			}
         });
 
         Games.insert({quads:formData}, function(er, val)

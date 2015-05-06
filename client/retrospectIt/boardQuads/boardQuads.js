@@ -1,7 +1,6 @@
 Template.boardQuads.helpers({
 	rowCount: function() {
 		var count = Template.currentData().boardQuads.length / 2;
-		console.log(count);
 		return _.range(count);
 	},
 	gridData: function() {
@@ -16,7 +15,7 @@ Template.boardQuads.helpers({
 				rowData = [];
 			}
 		}
-		console.log(gridData);
+
 		return gridData;
 	}
 })

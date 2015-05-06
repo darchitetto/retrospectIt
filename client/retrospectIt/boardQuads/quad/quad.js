@@ -1,33 +1,79 @@
-Template.quad.onRendered(function() {
-	var canvasIdAndIndexInGamesQuads = Template.instance().$('canvas').attr('id');
-	var canvas = new fabric.Canvas(Template.instance().$('canvas').attr('id'));
-	var canvasElement = Template.instance().$('canvas');
+Template.quad.events({
+    'dblclick': function (e) {
+        var data = Template.currentData();
+        var template = Template.instance();
+        var canvasIdAndIndexInGamesQuads = template.$('canvas').attr('id');
 
-	canvas.loadFromJSON(Template.currentData().data);
-	canvas.renderAll();
-	
-	canvasElement.on('touchstart', function() {
-		bootbox.prompt("Whatcha want to say?", function(result) {                
-		  if (result === null) {                                             
-		  } else {
-		    canvas.add(new fabric.Text(result, { left: 100, top: 100 }));                          
-		  }
-		});
-	})
-	
-	canvasElement.on('dblclick', function() {
-		bootbox.prompt("Whatcha want to say?", function(result) {                
-		  if (result === null) {                                             
-		  } else {
-		    canvas.add(new fabric.Text(result, { left: 100, top: 100 })); 
-		    //Meteor.call('updateQuad',Session.get('gameId'), canvasIdAndIndexInGamesQuads, JSON.stringify(canvas))
-		  }
-		});
-	})
+        bootbox.prompt("Whatcha want to say?", function (result) {
+            if (result === null) {
+            } else {
+                var card = $("<div class='card'>").appendTo(template.$('.cards')).text(result);
+                makeCardDraggable(card[0], data.id);
+                Meteor.call('updateQuad', Session.get('gameId'), data.id, template.$(".cards").html())
+            }
+        });
+    }
+});
 
-	canvas.on('after:render', function(options) {
-		Meteor.call('updateQuad',Session.get('gameId'), canvasIdAndIndexInGamesQuads, JSON.stringify(canvas))
-	    console.log('here');
-	});
-	
-}); 
+Template.quad.onRendered(function () {
+    var data = Template.currentData();
+    var template = Template.instance();
+
+    template.$(".cards").html(Template.currentData().data);
+
+    _.each(template.$(".cards .card"), function(card){ makeCardDraggable(card, data.id) });
+});
+
+function makeCardDraggable(card, quadId) {
+    interact(card)
+        .draggable({
+            onmove: function (event) {
+                window.dragMoveListener(event, quadId);
+            }
+        })
+        .resizable({
+            edges: {left: true, right: true, bottom: true, top: true}
+        })
+        .on('resizemove', function (event) {
+            var target = event.target,
+                x = (parseFloat(target.getAttribute('data-x')) || 0),
+                y = (parseFloat(target.getAttribute('data-y')) || 0);
+
+            // update the element's style
+            target.style.width = event.rect.width + 'px';
+            target.style.height = event.rect.height + 'px';
+
+            // translate when resizing from top or left edges
+            x += event.deltaRect.left;
+            y += event.deltaRect.top;
+
+            target.style.webkitTransform = target.style.transform =
+                'translate(' + x + 'px,' + y + 'px)';
+
+            target.setAttribute('data-x', x);
+            target.setAttribute('data-y', y);
+        })
+        .on('up', function(event) {
+            var target = event.target;
+            var html = $(target).closest(".cards").html();
+            Meteor.call('updateQuad', Session.get('gameId'), quadId, html)
+        });
+}
+
+function dragMoveListener(event, quadId) {
+    var target = event.target,
+    // keep the dragged position in the data-x/data-y attributes
+        x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
+        y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy;
+
+    // translate the element
+    target.style.webkitTransform =
+        target.style.transform =
+            'translate(' + x + 'px, ' + y + 'px)';
+
+    // update the posiion attributes
+    target.setAttribute('data-x', x);
+    target.setAttribute('data-y', y);
+}
+
+window.dragMoveListener = dragMoveListener;
