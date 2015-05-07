@@ -1,8 +1,12 @@
 <template name="newGameBoard">
-	<form>
-		{{> retroItButton }}
-		{{> dropdown}}
-		{{> newGameQuadrants}}
-	</form>
+	<div class="row">
+		<form>
+			<div class="col-lg-offset-1">
+				{{> retroItButton }}
+				{{> dropdown}}
+			</div>
+			{{> newGameQuadrants}}
+		</form>
+	</div>
 </template>
 
