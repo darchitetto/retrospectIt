@@ -13,7 +13,6 @@ function configureClock() {
 
 Template.timer.onRendered(configureClock);
 
-
 Template.timer.events({
 	"click .timer":function(event) {
 		var timerButton = $(event.currentTarget);

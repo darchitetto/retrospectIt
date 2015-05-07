@@ -1,7 +1,12 @@
 <template name="timer">
-	<button class="timer btn btn-default fa fa-play"></button>
-	<button class="timer-reset btn btn-default fa fa-undo"></button>
-	<div class="retro-timer">
-	</div>
+	<div class="row">
+		<div class="col-lg-3">
+			<button class="timer btn btn-default fa fa-play hidden-xs"></button>
+			<button class="timer-reset btn btn-default fa fa-undo hidden-xs"></button>
+		</div>
 
+		<div class="col-lg-9">
+			<div class="retro-timer"></div>
+		</div>
+	</div>
 </template>
